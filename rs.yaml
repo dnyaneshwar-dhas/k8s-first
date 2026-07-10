@@ -16,11 +16,11 @@ spec:
         app: myapp
     spec: 
       containers: 
-        - name: nginx-container 
-          image: mayurpandit25/chatapp-frontend:latest
+        - name: tomcat-image
+          image: ashish050904/my-web-app
           ports: 
             - name: nginxport
-              containerPort: 80
+              containerPort: 8080
 ...
 ---
 apiVersion: v1 
@@ -36,5 +36,5 @@ spec:
   ports: 
     - name: svc-port 
       protocol: TCP 
-      port: 80
-      targetPort: 80
+      port: 8080
+      targetPort: 8080
