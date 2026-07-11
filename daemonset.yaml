@@ -19,5 +19,5 @@ spec:
           image: amazon/cloudwatch-agent
           ports:
             -name: daemonport
-             containerPort: 80
+            containerPort: 80
       
