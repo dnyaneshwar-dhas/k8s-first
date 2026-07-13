@@ -1,50 +1,46 @@
 apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: my-deployment
-  labels:
+kind: Deployment 
+metadata: 
+  name: my-deploy
+  labels: 
     app: myapp
-spec:
-  replicas: 5
-  selector:
-    matchLabels:
-     app: myapp
+spec: 
+  replicas: 5 
+  selector: 
+    matchLabels: 
+      app: myapp
   strategy:
-     type: RollingUpdate
-     rollingUpdate:
+    type: RollingUpdate 
+    rollingUpdate: 
       maxSurge: 1
       maxUnavailable: 1
-  template:
-    metadata:
+  template: 
+    metadata: 
       name: my-template
-      labels:
+      labels: 
         app: myapp
-    spec:
-      containers:
-       - name: nginx-container
-         image: nginx:latest
-         ports:
-          - name: nginx-port
-            containerPort: 80
+    spec: 
+      containers: 
+        - name: nginx
+          image: nginx:latest
+          ports: 
+            - name: nginx-port
+              containerPort: 80
 ...
 ---
 apiVersion: v1
-kind: Service
-metadata:
+kind: Service 
+metadata: 
   name: deploy-svc
-  labels:
+  labels: 
     app: myapp
-spec:
+spec: 
   type: NodePort
-  selector:
+  selector: 
     app: myapp
-  ports:
-   - name: nginxsvcport
-     protocol: TCP
-     port: 80
-     targetPort: 80
-  
-
-        
-     
-        
+  ports: 
+    - name: nginxsvcport
+      protocol: TCP 
+      port: 80
+      targetPort: 80
+...
