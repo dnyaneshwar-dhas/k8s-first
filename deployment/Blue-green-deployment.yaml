@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: deployment
 metadata:
   labels:
     app: online-shop-green
@@ -16,14 +16,14 @@ spec:
         app: online-shop-green
     spec:
       containers:
-      - image: amitabhdevops/online_shop
-        name: online-shop-green
-        resources:
-          limits:
-            cpu: "500m"
-            memory: "512Mi"
-          requests:
-            cpu: "200m"
+       - image: amitabhdevops/online_shop
+         name: online-shop-green
+         resources:
+           limits:
+              cpu: "500m"
+              memory: "512Mi"
+           requests:
+            cpu: "250m"
             memory: "256Mi"
 ---
 apiVersion: v1
@@ -36,7 +36,10 @@ spec:
     app: online-shop-green
   type: NodePort
   ports:
-    - protocol: TCP
-      port: 3000
-      targetPort: 3000
-      nodePort: 30000
+   - protocol: TCP
+     port: 3000
+     targetPort: 3000
+     nodePort: 30000 
+
+           
+
