@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: recreate-deployment
-  labbels:
+  labels:
     app: myapp
 spec:
   replicas: 5
