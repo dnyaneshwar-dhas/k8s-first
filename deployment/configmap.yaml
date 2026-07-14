@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata: 
   name: my-config 
   labels: 
-    app: mysql
+    app: myapp
 data: 
   mysql_user: admin 
   mysql_password: admin123
