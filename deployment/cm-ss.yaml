@@ -8,12 +8,12 @@ spec:
   replicas: 3
   selector: 
     matchLabels:
-      app: myapp
+      app: mysql
   template: 
     metadata: 
       name: mysql-template
       labels: 
-        app: myapp
+        app: mysql
     spec: 
       containers: 
         - name: mysql-container
@@ -52,13 +52,11 @@ kind: Service
 metadata: 
   name: mysql-svc
   labels: 
-    app: myapp
+    app: mysql
 spec: 
   clusterIP: None
   selector: 
-    app: myapp
+    app: mysql
   ports: 
-    - name: myport 
-      protocol: TCP 
       port: 3306
       targetPort: 3306 
