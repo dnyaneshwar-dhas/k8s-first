@@ -1,64 +1,64 @@
-apiVersion: apps/v1
-kind: StatefulSet
-metadata:
+apiVersion: apps/v1 
+kind: StatefulSet 
+metadata: 
   name: mysql
-  labels:
+  labels: 
     app: myapp
-spec:
+spec: 
   replicas: 3
-  selector:
+  selector: 
     matchLabels:
       app: myapp
-  template:
-    metadata:
+  template: 
+    metadata: 
       name: mysql-template
-      labels:
+      labels: 
         app: myapp
-    spec:
-      containers:
+    spec: 
+      containers: 
         - name: mysql-container
           image: mysql:8.0
-          ports:
+          ports: 
             - name: mysql-port
               containerPort: 3306
-          env:
+          env: 
             - name: MYSQL_USER
-              valueFrom:
+              valueFrom: 
                 configMapKeyRef:
                   name: my-config
                   key: mysql_user
+
             - name: MYSQL_PASSWORD
-              valueFrom:
-                configMapKeyRef:
+              valueFrom: 
+                configMapKeyRef: 
                   name: my-config
                   key: mysql_password
+
             - name: MYSQL_DATABASE
-              valueFrom:
-                configMapKeyRef:
+              valueFrom: 
+                configMapKeyRef: 
                   name: my-config
                   key: mysql_database
+
             - name: MYSQL_ROOT_PASSWORD
-              valueFrom:
-                configMapKeyRef:
-                  name: my-config
+              valueFrom: 
+                configMapKeyRef: 
+                  name: my-config 
                   key: mysql_root_password
 ...
 ---
-apiVersion: v1
-kind: Service
-metadata:
+apiVersion: v1 
+kind: Service 
+metadata: 
   name: mysql-svc
-  labels:
+  labels: 
     app: myapp
-spec:
+spec: 
   clusterIP: None
-  selector:
-   app: myapp
-   ports:
-     - name: myport
-       protocol: TCP
-       port: 3306
-       targetPort: 3306
-    
-                
-          
+  selector: 
+    app: myapp
+  ports: 
+    - name: myport 
+      protocol: TCP 
+      port: 3306
+      targetPort: 3306 
