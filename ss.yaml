@@ -1,14 +1,14 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: mysql
   labels:
-    app: mysql
+    app: myapp
 spec:
   replicas: 3
   selector:
-    matchlabels:
-      app: mysql
+    matchLabels:
+      app: myapp
   template:
     metadata:
       name: mysql-template
@@ -36,8 +36,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mysql-svc
-  lables:
-    app:myapp
+  labels:
+    app: myapp
 spec:
   ClusterIP: None
   selector:
